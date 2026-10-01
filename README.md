@@ -116,14 +116,14 @@ sistema_padaria
 ## Banco de dados
 ### Nome do banco: sistema_padaria
 
-### Tabela: Usuários
+### Tabela usuarios
 
 |Coluna|Tipo|chave|Descrição|
 |---|---|---|---|
 |id|INT|PK|Identificador único do usuário, auto incremento|
 |nome|Varchar||Nome completo do usuário|
 |senha|Varchar||Senha do usuário|
-|atribuicao|Varchar||atribuição do usuário, empregado ou dono|
+|atribuicao|Varchar||atribuição do empregado ou dono|
 
 ### Tabela produtos
 
@@ -163,25 +163,25 @@ O sistema utiliza para a segurança do site:
 Abra o terminal e execute:
 
 ```Bash
-git clone https://github.com/seu_usuario/seu_projeto.git
-cd seu_projeto
+git clone https://github.com/viniciuscelis/projeto_integrador.git
+cd projeto_integrador
 ```
 
 ### Passo 2: Criar o Usuário no PostgreSQL
 
-Crie um novo usuário no PostgreSQL, execute:
-
-```Bash
-createuser -U postgres -P seu_usuario
+Crie um novo usuário no PostgreSQL:
+```bash
+CREATE USER padaria WITH PASSWORD 'sua_senha_segura';
 ```
-O PostgreSQL solicitará que você digite e confirme a senha para esse novo usuário.
 
-### Passo 3: Criar o Banco de Dados
+### Passo 3: Criar o banco de dados e alterar seu dono
 
-Caso o banco de dados ainda não exista, crie-o associado ao usuário com o comando:
+Caso o banco de dados ainda não exista, crie-o ainda com o usuário postgres com o comando:
 
 ```Bash
-createdb -U seu_usuario nome_do_banco
+CREATE DATABASE sistema_padaria;
+
+ALTER DATABASE sistema_padaria OWNER TO padaria;
 ```
 
 ### Passo 4: Importar o Banco de Dados
@@ -190,7 +190,7 @@ O projeto disponibiliza um arquivo de dump contendo toda a estrutura e os dados 
 Execute:
 
 ```Bash
-psql -U seu_usuario -d nome_do_banco -f dump.sql
+psql -U padaria -d sistema_padaria -f dump.sql
 ```
 
 ### Passo 5: Configurar a Conexão com o Banco
