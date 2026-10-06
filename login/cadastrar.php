@@ -1,4 +1,5 @@
 <?php 
+// Carrega as funcoes e verifica se o usuario esta logado
 require_once __DIR__ . '/../includes/functions.php';
 require_once __DIR__ . '/verifica_user.php';
 ?>
@@ -13,6 +14,7 @@ require_once __DIR__ . '/verifica_user.php';
 <body>
     <?php include __DIR__ . '/../includes/header.php';?> <br>
     <main>
+    <!-- Formulario para realizacao de cadastro -->
     <form action="" method="post">
         <label for="email">Email: </label>
         <input type="text" name="email" id="email"> <br>
@@ -24,6 +26,7 @@ require_once __DIR__ . '/verifica_user.php';
         <input type="submit" value="Cadastrar"> <br>
     </form>
     <?php
+    // Executa a funcao de cadastro ao enviar os dados
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         cadastrar_user($conexao, $_POST['email'], $_POST['senha']);
     }

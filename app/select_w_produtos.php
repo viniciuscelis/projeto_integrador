@@ -1,4 +1,5 @@
 <?php
+// Carrega as funcoes e verifica se o usuario esta autenticado
 require_once __DIR__ . '/../includes/functions.php';
 require_once __DIR__ . '/../login/verifica_user.php';
 ?>
@@ -14,6 +15,7 @@ require_once __DIR__ . '/../login/verifica_user.php';
     <?php include __DIR__ . '/../includes/header.php';?>
     <main>
     <h1>Consultar produtos</h1>
+    <!-- Formulario para buscar o produto pelo ID -->
     <form action="" method="post">
         <label for="id">ID: </label>
         <input type="number" name="id" id="id"> <br>
@@ -22,6 +24,7 @@ require_once __DIR__ . '/../login/verifica_user.php';
         
     </form>
     <?php 
+    // Realiza a consulta se o ID foi enviado
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         consultar_produtos($conexao, $_POST['id']);
     }

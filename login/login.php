@@ -1,4 +1,5 @@
 <?php 
+// Carrega as funcoes do sistema e inicia a sessao
 require_once __DIR__ . '/../includes/functions.php';
 session_start();
 ?>
@@ -14,6 +15,7 @@ session_start();
     <?php include __DIR__ . '/../includes/header.php';?>
     <main>
         <h1>Faça login para continuar</h1>
+        <!-- Formulario para digitar as credenciais de acesso -->
         <form action="" method="post">
             <label for="nome">Nome: </label>
             <input type="text" name="nome" id="nome" placeholder="Insira seu nome" required> <br>
@@ -25,15 +27,19 @@ session_start();
             <input type="submit" value="Entrar">
         </form>
         <?php 
+        // Processa o formulario quando enviado
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            // Busca o usuario no banco pelo nome
             $usuario = consultar_user($conexao, $_POST['nome']);
 
-            // password_verify compara a senha digitada com o hash salvo no banco
+            // Compara a senha digitada com a senha criptografada no banco
             if ($usuario && password_verify($_POST['senha'], $usuario['senha'])) {
+                // Salva as informacoes do usuario na sessao
                 $_SESSION['id'] = $usuario['id'];
                 $_SESSION['nome'] = $usuario['nome'];
                 $_SESSION['atribuicao'] = $usuario['atribuicao'];
 
+                // Redireciona para a pagina inicial
                 header("Location: /index.php");
                 exit;
             } else {

@@ -1,4 +1,5 @@
 <?php
+// Carrega as funcoes e verifica se o usuario esta autenticado
 require_once __DIR__ . '/../includes/functions.php';
 require_once __DIR__ . '/../login/verifica_user.php';
 ?>
@@ -14,6 +15,7 @@ require_once __DIR__ . '/../login/verifica_user.php';
     <?php include __DIR__ . '/../includes/header.php';?>
     <main>
     <?php 
+        // Exibe a tabela completa com os produtos cadastrados
         relatorio_produtos($conexao)
     ?>
     </main>

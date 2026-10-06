@@ -1,59 +1,472 @@
-html {
-    background: gray;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* =========================================================
+   SISTEMA PADARIA - Folha de Estilos Visual Moderna
+   ========================================================= */
+
+/* 1. Reset e Base Global */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+html {
+    min-height: 100%;
+    background: linear-gradient(135deg, #f5eee6 0%, #ede2d3 100%);
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    color: #332418;
+}
+
+/* 2. Container Central / Card Principal */
 body {
     position: relative;
-    width: fit-content;
-    min-width: 40%;
-    height: fit-content;
-    min-height: 70%;
-    margin: 50px auto;
-    padding: 30px;
-    background: lightgray;
-    border: 2px solid black;
-    border-radius: 10px;
+    width: 92%;
+    max-width: 860px;
+    min-height: 520px;
+    margin: 40px auto;
+    padding: 35px 40px;
+    background: #ffffff;
+    border: 1px solid #ebd9c8;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(90, 56, 30, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* 3. Cabeçalho e Navegação */
+header {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+header h1:empty {
+    display: none;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 16px;
+    align-items: center;
+}
+
+/* Linha superior: usuário e autenticação (Entrar, Sair, Cadastrar usuário) */
 nav div:nth-child(2) {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    min-width: 60px;
-    padding: 9px 10px;
-    border-radius: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #ebd9c8;
 }
 
-main { display: inline-block; }
-
-form {
-    width: fit-content;
-    margin: 0 auto;
-    text-align: right;
+/* Linha principal: menu de navegação do sistema */
+nav div:nth-child(1) {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 
-main > a {
-    display: block;
-    width: 208px;
-    margin: 0 auto;
+nav div:nth-child(1) br {
+    display: none;
 }
 
-a, input[type="reset"], input[type="submit"] {
+/* Estilo padrão de links e botões de navegação */
+a {
     display: inline-block;
-    min-width: 100px;
-    margin: 5px 2px;
-    padding: 0px 4px;
-    background: white;
-    color: black;
-    border: 1px solid black;
-    border-radius: 5px;
+    padding: 8px 16px;
+    background: #fdfaf6;
+    color: #5a3825;
+    border: 1px solid #ebd9c8;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 600;
     text-align: center;
     text-decoration: none;
-    white-space: nowrap;
     cursor: pointer;
-    box-sizing: border-box;
+    white-space: nowrap;
+    transition: all 0.2s ease-in-out;
 }
 
-a:hover, input[type="reset"]:hover, input[type="submit"]:hover { background: #eee; }
+a:hover {
+    background: #c06c27;
+    color: #ffffff;
+    border-color: #c06c27;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(192, 108, 39, 0.25);
+}
+
+/* Marcação indicando a página em que o usuário se encontra (mais escuro) */
+a.ativo,
+a.active {
+    background: #4a2e18;
+    color: #ffffff;
+    border-color: #38200f;
+    font-weight: 700;
+}
+
+/* Botões específicos da barra de usuário */
+nav div:nth-child(2) a[href*="logout"] {
+    background: #fff5f5;
+    border-color: #f0c9c9;
+    color: #c62828;
+}
+
+nav div:nth-child(2) a[href*="logout"]:hover {
+    background: #c62828;
+    color: #ffffff;
+    border-color: #c62828;
+    box-shadow: 0 4px 10px rgba(198, 40, 40, 0.25);
+}
+
+nav div:nth-child(2) a[href*="login"] {
+    background: #c06c27;
+    color: #ffffff;
+    border-color: #c06c27;
+}
+
+nav div:nth-child(2) a[href*="login"]:hover {
+    background: #9f5419;
+    border-color: #9f5419;
+}
+
+nav div:nth-child(2) a[href*="create_user"] {
+    background: #f2e9dc;
+    border-color: #dfcdb8;
+    color: #4a301a;
+}
+
+nav div:nth-child(2) a[href*="create_user"]:hover {
+    background: #4a301a;
+    color: #ffffff;
+    border-color: #4a301a;
+}
+
+/* Linhas divisórias suaves */
+hr {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ebd9c8, transparent);
+    margin: 18px 0;
+}
+
+/* 4. Conteúdo Principal (main) */
+main {
+    width: 100%;
+    display: inline-block;
+    margin: 10px 0;
+    color: #38291e;
+    line-height: 1.8;
+}
+
+main > br {
+    display: none;
+}
+
+/* Títulos */
+h1 {
+    color: #4a2e18;
+    font-size: 2.1rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    color: #8c5322;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+h3 {
+    color: #7d6b5c;
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+/* Botão ou link avulso no main */
+main > a {
+    display: inline-block;
+    min-width: 160px;
+    margin: 20px auto 10px auto;
+    padding: 10px 20px;
+    background: #ffffff;
+    color: #c06c27;
+    border: 1.5px solid #c06c27;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+main > a:hover {
+    background: #c06c27;
+    color: #ffffff;
+}
+
+/* Linha divisória de itens no relatório */
+main hr {
+    width: 85%;
+    border: 0;
+    height: 1px;
+    background: #ebd9c8;
+    margin: 16px auto;
+}
+
+/* 5. Formulários Elegantes */
+form {
+    width: 100%;
+    max-width: 440px;
+    margin: 20px auto;
+    padding: 26px 30px;
+    background: #fdfbf7;
+    border: 1px solid #ebd9c8;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(90, 56, 30, 0.04);
+    text-align: left;
+}
+
+form br {
+    display: none;
+}
+
+form label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 5px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #4a301a;
+}
+
+form label:first-of-type {
+    margin-top: 0;
+}
+
+/* Campos de entrada e seleção */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"],
+input[type="date"],
+select {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+    background: #ffffff;
+    color: #332418;
+    border: 1.5px solid #dccdc0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+    border-color: #c06c27;
+    box-shadow: 0 0 0 3px rgba(192, 108, 39, 0.18);
+}
+
+/* Botões do formulário (Limpar e Enviar) */
+input[type="reset"],
+input[type="submit"] {
+    display: inline-block;
+    min-width: 110px;
+    margin: 20px 4px 0 0;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Botão de Envio (Cadastrar, Entrar, Atualizar, etc.) */
+input[type="submit"] {
+    background: linear-gradient(135deg, #c06c27 0%, #a35416 100%);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(163, 84, 22, 0.25);
+    float: right;
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(135deg, #d47a31 0%, #b85e19 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(163, 84, 22, 0.35);
+}
+
+/* Botão de Limpar */
+input[type="reset"] {
+    background: #f0e6dc;
+    color: #5d4636;
+    border: 1px solid #dccac0;
+    float: left;
+}
+
+input[type="reset"]:hover {
+    background: #e3d5c8;
+    color: #3b281c;
+}
+
+/* Limpa o float dos botões dentro do form */
+form::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* 6. Mensagens de Alerta / Retorno */
+p[style*="color: green"],
+p[style*="color:green"] {
+    background: #e8f5e9;
+    color: #1b5e20 !important;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin: 15px auto;
+    max-width: 440px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+p[style*="color: red"],
+p[style*="color:red"] {
+    background: #ffebee;
+    color: #b71c1c !important;
+    border: 1px solid #ffcdd2;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin: 15px auto;
+    max-width: 440px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* 7. Tabelas de Produtos e Relatórios */
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.tabela-produtos {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(90, 56, 30, 0.04);
+    border: 1px solid #ebd9c8;
+}
+
+.tabela-produtos th {
+    background: #4a2e18;
+    color: #ffffff;
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+.tabela-produtos td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f0e6dc;
+    font-size: 0.92rem;
+    color: #38291e;
+    text-align: left;
+}
+
+.tabela-produtos tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-produtos tr:hover {
+    background: #fdfaf6;
+}
+
+/* Card de Detalhes da Consulta de Produto */
+.card-detalhe-produto {
+    width: 100%;
+    max-width: 440px;
+    margin: 25px auto;
+    padding: 22px 26px;
+    background: #fdfbf7;
+    border: 1px solid #ebd9c8;
+    border-left: 5px solid #c06c27;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(90, 56, 30, 0.05);
+}
+
+.card-detalhe-produto h3 {
+    margin-bottom: 12px;
+    color: #4a2e18;
+    border-bottom: 1px dashed #ebd9c8;
+    padding-bottom: 8px;
+}
+
+.card-detalhe-produto p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+    color: #443224;
+}
+
+/* 8. Rodapé */
+footer {
+    width: 100%;
+    margin-top: 35px;
+}
+
+footer h1 {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #a39284;
+}
+
+/* 9. Responsividade para telas menores / celulares */
+@media (max-width: 640px) {
+    body {
+        width: 95%;
+        margin: 15px auto;
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav div:nth-child(2) {
+        justify-content: center;
+    }
+
+    form {
+        padding: 20px 18px;
+    }
+
+    input[type="reset"],
+    input[type="submit"] {
+        float: none;
+        width: 100%;
+        margin: 8px 0;
+    }
+}
