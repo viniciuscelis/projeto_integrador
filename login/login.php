@@ -25,18 +25,19 @@ session_start();
             <input type="submit" value="Entrar">
         </form>
         <?php 
-        if($_SERVER['REQUEST_METHOD']=="POST"){
-            $hash = password_hash($_POST['senha'], PASSWORD_DEFAULT);
-            $usuario = consultar_user($conexao,$_POST['nome']);
-            if($usuario['nome']==$_POST['nome'] && $usuario['senha'] == $hash){
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $usuario = consultar_user($conexao, $_POST['nome']);
 
+            // password_verify compara a senha digitada com o hash salvo no banco
+            if ($usuario && password_verify($_POST['senha'], $usuario['senha'])) {
                 $_SESSION['id'] = $usuario['id'];
+                $_SESSION['nome'] = $usuario['nome'];
+                $_SESSION['atribuicao'] = $usuario['atribuicao'];
 
-                echo "Usuário logado!";
                 header("Location: /index.php");
-
+                exit;
             } else {
-                echo "Usuário ou senha inválidos";
+                echo "<p style='color: red;'>Usuário ou senha inválidos</p>";
             }
         }
         ?>

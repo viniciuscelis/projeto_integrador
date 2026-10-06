@@ -75,25 +75,26 @@ function atualizar_produtos($conexao, $id, $nome, $codigo, $categoria, $preco, $
 }
 
 // Funções para login
-function cadastrar_user($conexao, $email, $senha){
-
-    $sql = "INSERT INTO usuarios(email,senha) VALUES(:email, :senha)";
+function cadastrar_user($conexao, $nome, $senha, $atribuicao = 'empregado'){
+    $hash = password_hash($senha, PASSWORD_DEFAULT);
+    $sql = "INSERT INTO usuarios(nome, senha, atribuicao) VALUES(:nome, :senha, :atribuicao)";
 
     $stmt = $conexao->prepare($sql);
-    $stmt->bindParam(":email", $email);
-    $stmt->bindParam(":senha", $senha);
+    $stmt->bindParam(":nome", $nome);
+    $stmt->bindParam(":senha", $hash);
+    $stmt->bindParam(":atribuicao", $atribuicao);
 
     $stmt->execute();
     echo "Usuário cadastrado com sucesso!";
 }
 
-function consultar_user($conexao, $email)
+function consultar_user($conexao, $nome)
 {
-    $sql = "SELECT id, nome, senha FROM usuarios WHERE nome = :nome";
+    $sql = "SELECT id, nome, senha, atribuicao FROM usuarios WHERE nome = :nome";
 
     try{
     $stmt = $conexao->prepare($sql);
-    $stmt->bindParam(":nome", $email);
+    $stmt->bindParam(":nome", $nome);
     $stmt->execute();
 
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
