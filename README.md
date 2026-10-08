@@ -180,10 +180,12 @@ Dentro do ambiente interativo do PostgreSQL (indicado pelo prompt postgres=#), e
 
 ```SQL
 CREATE USER padaria WITH PASSWORD 'sua_senha_segura';
-CREATE DATABASE sistema_padaria OWNER padaria;
-\q
 ```
-> (O comando \q faz você sair do console do PostgreSQL e retornar ao terminal do seu sistema operacional).
+Execute separadamente
+```SQL
+CREATE DATABASE sistema_padaria OWNER padaria;
+```
+> Use o comando \q para sair do console do PostgreSQL e retornar ao terminal do seu sistema operacional.
 
 ### Passo 3: Importar o Banco de Dados
 Garante que você continua no terminal do seu sistema operacional e dentro da pasta projeto_integrador (onde está o arquivo do dump).
