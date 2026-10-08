@@ -149,6 +149,9 @@ home
 └─ Logout
 ```
 
+![Imagem para ilustrar o fluxo do sistema](/extra/fluxo_paginas.png)
+
+
 ## Segurança
 O sistema utiliza para a segurança do site:
 - Sessões PHP para login e autenticação de usuários
