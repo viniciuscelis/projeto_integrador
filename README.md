@@ -159,7 +159,6 @@ O sistema utiliza para a segurança do site:
 ## Como executar
 
 ### Passo 1: Clonar o Repositório
-
 Abra o terminal e execute:
 
 ```Bash
@@ -167,53 +166,54 @@ git clone https://github.com/viniciuscelis/projeto_integrador.git
 cd projeto_integrador
 ```
 
-### Passo 2: Criar o Usuário no PostgreSQL
+### Passo 2: Criar o Usuário e o Banco no PostgreSQL
+Acesse o console do PostgreSQL como superusuário no seu terminal:
 
-Crie um novo usuário no PostgreSQL:
-```bash
+```Bash
+psql -U postgres -h localhost
+```
+
+Dentro do ambiente interativo do PostgreSQL (indicado pelo prompt postgres=#), execute os comandos SQL para criar o usuário e o banco de dados:
+
+```SQL
 CREATE USER padaria WITH PASSWORD 'sua_senha_segura';
+CREATE DATABASE sistema_padaria OWNER padaria;
+\q
 ```
+> (O comando \q faz você sair do console do PostgreSQL e retornar ao terminal do seu sistema operacional).
 
-### Passo 3: Criar o banco de dados e alterar seu dono
+### Passo 3: Importar o Banco de Dados
+Garante que você continua no terminal do seu sistema operacional e dentro da pasta projeto_integrador (onde está o arquivo do dump).
 
-Caso o banco de dados ainda não exista, crie-o ainda com o usuário postgres com o comando:
+Se o arquivo dump.sql for um script SQL em texto plano, execute:
 
 ```Bash
-CREATE DATABASE sistema_padaria;
-
-ALTER DATABASE sistema_padaria OWNER TO padaria;
+psql -h localhost -U padaria -d sistema_padaria -f dump.sql
 ```
 
-### Passo 4: Importar o Banco de Dados
+Nota: Se o arquivo for um dump em formato binário ou customizado (.dump ou .tar), utilize o pg_restore:
 
-O projeto disponibiliza um arquivo de dump contendo toda a estrutura e os dados necessários.
-Execute:
+Bash
+pg_restore -h localhost -U padaria -d sistema_padaria -v dump.sql
+Se houver erro de permissão por conta de comandos de administração no dump, substitua -U padaria por -U postgres.
 
-```Bash
-psql -U padaria -d sistema_padaria -f dump.sql
-```
-
-### Passo 5: Configurar a Conexão com o Banco
-
-Localize o arquivo de conexão (como conexao.php) e atualize as credenciais conforme o seu ambiente:
+### Passo 4: Configurar a Conexão com o Banco
+Localize o arquivo de conexão do projeto (como conexao.php) e atualize os dados com as credenciais criadas:
 
 ```PHP
 $host = 'localhost';
-$db   = 'nome_do_banco';
-$user = 'seu_usuario';
-$pass = 'sua_senha';
+$db   = 'sistema_padaria';
+$user = 'padaria';
+$pass = 'sua_senha_segura';
 ```
-### Passo 6: Executar o Sistema
 
-No terminal, dentro da pasta do projeto, execute:
+### Passo 5: Executar o Sistema
+No terminal, ainda dentro da pasta do projeto, inicie o servidor embutido do PHP:
 
 ```Bash
 php -S localhost:8000
 ```
-
-O servidor local será iniciado.
-Abra o navegador e acesse:
-localhost:8000
+Abra o navegador e acesse: localhost:8000
 
 ## Requisitos
 
