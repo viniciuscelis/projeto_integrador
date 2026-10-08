@@ -149,6 +149,18 @@ nav div:nth-child(2) a[href*="create_user"]:hover {
     border-color: #4a301a;
 }
 
+nav div:nth-child(2) a[href*="consulta_user"] {
+    background: #f2e9dc;
+    border-color: #dfcdb8;
+    color: #4a301a;
+}
+
+nav div:nth-child(2) a[href*="consulta_user"]:hover {
+    background: #4a301a;
+    color: #ffffff;
+    border-color: #4a301a;
+}
+
 /* Linhas divisórias suaves */
 hr {
     width: 100%;

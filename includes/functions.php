@@ -191,14 +191,22 @@ function consultar_user($conexao, $nome)
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(":nome", $nome);
         $stmt->execute();
+        // Obtem os dados do usuário
+        $nome = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Retorna o registro do usuario encontrado
-        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        return $usuario;
-    } catch (PDOException $e){
+        // Se o usuário foi encontrado, exibe os detalhes formatados
+        if ($nome) {
+            echo "<div class='card-detalhe-usuario'>";
+            echo "<h3>Detalhes do usuario: {$nome['nome']}</h3>";
+            echo "<p><strong>Id:</strong> " . htmlspecialchars($nome['id']) . "</p>";
+            echo "<p><strong>Nome:</strong> " . htmlspecialchars($nome['nome']) . "</p>";
+            echo "</div>";
+        } else {
+            echo "<p style='color: red;'>Nenhum usuario encontrado com o ID " . htmlspecialchars($nome) . ".</p>";
+        }
+    } catch (PDOException $e) {
         // Exibe mensagem caso ocorra erro
-        echo $e->getMessage();
+        echo "<p style='color: red;'>Erro ao consultar usuario: " . $e->getMessage() . "</p>";
     }
 }
 ?>
