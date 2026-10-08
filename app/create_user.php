@@ -32,7 +32,7 @@ if (!isset($_SESSION['atribuicao']) || $_SESSION['atribuicao'] !== 'dono') {
         <label for="atribuicao">Atribuição: </label>
         <select name="atribuicao" id="atribuicao">
             <option value="empregado">Empregado</option>
-            <option value="dono">Dono</option>
+            <option value="dono">administrador</option>
         </select> <br>
 
         <input type="reset" value="Limpar">
