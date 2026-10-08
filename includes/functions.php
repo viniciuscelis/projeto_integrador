@@ -209,4 +209,23 @@ function consultar_user($conexao, $nome)
         echo "<p style='color: red;'>Erro ao consultar usuario: " . $e->getMessage() . "</p>";
     }
 }
+
+function verificar_user($conexao, $nome)
+{
+    $sql = "SELECT id, nome, senha, atribuicao FROM usuarios WHERE nome = :nome";
+
+    try{
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindParam(":nome", $nome);
+        $stmt->execute();
+
+        // Retorna o registro do usuario encontrado
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $usuario;
+    } catch (PDOException $e){
+        // Exibe mensagem caso ocorra erro
+        echo $e->getMessage();
+    }
+}
 ?>

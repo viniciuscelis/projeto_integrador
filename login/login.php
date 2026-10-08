@@ -30,7 +30,7 @@ session_start();
         // Processa o formulario quando enviado
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             // Busca o usuario no banco pelo nome
-            $usuario = consultar_user($conexao, $_POST['nome']);
+            $usuario = verificar_user($conexao, $_POST['nome']);
 
             // Compara a senha digitada com a senha criptografada no banco
             if ($usuario && password_verify($_POST['senha'], $usuario['senha'])) {
