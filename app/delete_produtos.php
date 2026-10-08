@@ -9,7 +9,7 @@ require_once __DIR__ . '/../login/verifica_user.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/projeto_integrador//style/style.css">
     <title>delete.php</title>
 </head>
 <body>

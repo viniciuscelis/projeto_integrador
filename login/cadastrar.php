@@ -1,14 +1,14 @@
 <?php 
 // Carrega as funcoes e verifica se o usuario esta logado
 require_once __DIR__ . '/../includes/functions.php';
-require_once __DIR__ . '/verifica_user.php';
+require_once __DIR__ . '/./verifica_user.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/projeto_integrador/style/style.css">
     <title>Cadastro Aluno</title>
 </head>
 <body>

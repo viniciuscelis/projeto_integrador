@@ -9,5 +9,5 @@ $_SESSION = array();
 session_destroy();
 
 // Redireciona para a pagina inicial
-header("Location: /index.php");
+header("Location: /projeto_integrador/index.php");
 ?>

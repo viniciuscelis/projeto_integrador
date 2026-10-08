@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/projeto_integrador//style/style.css">
     <title>Login</title>
 </head>
 <body>
@@ -40,7 +40,7 @@ session_start();
                 $_SESSION['atribuicao'] = $usuario['atribuicao'];
 
                 // Redireciona para a pagina inicial
-                header("Location: /index.php");
+                header("Location: /projeto_integrador/index.php");
                 exit;
             } else {
                 echo "<p style='color: red;'>Usuário ou senha inválidos</p>";

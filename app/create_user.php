@@ -14,7 +14,7 @@ if (!isset($_SESSION['atribuicao']) || $_SESSION['atribuicao'] !== 'dono') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/projeto_integrador//style/style.css">
     <title>Cadastro de usuários</title>
 </head>
 <body>

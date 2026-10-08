@@ -6,7 +6,7 @@ if(session_status() == PHP_SESSION_NONE){
 
 // Verifica se o usuario esta autenticado, senao redireciona para a tela de login
 if(!isset($_SESSION['id'])){
-    header("location: /login/login.php");
+    header("location: /projeto_integrador/login/login.php");
     exit;
 }
 ?>
