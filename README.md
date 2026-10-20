@@ -109,8 +109,35 @@ Este sistema tem o objetivo de auxiliar no desenvolvimento de uma padaria, permi
 ## Estrutura do projeto
 ```bash
 sistema_padaria
-|
-|- index.php
+├─ index.php
+├─ .gitignore
+├─ dump.sql
+├─ README.md
+├─ app
+|   consulta_user.php
+|   create_produtos.php
+|   create_user.php
+|   delete_produtos.php
+|   delete_user.php
+|   select_produtos.php
+|   select_user.php
+|   select_w_produtos.php
+|   update_produtos.php
+├─ databse
+|   connect.php
+├─ extra
+|   fluxo_paginas.png
+├─ includes
+|   footer.php
+|   functions.php
+|   header.php
+├─ login
+|   cadastrar.php
+|   login.php
+|   logout.php
+|   verifica_user.php
+└─ style
+    style.css
 ```
 
 ## Banco de dados
@@ -143,10 +170,16 @@ index
 login
 |
 home
-├─ Funcionários
-├─ Gerenciamento de produtos
-├─ Estoque
-└─ Logout
+├─ Cadastrar produtos
+├─ Excluir produtos
+├─ Relatório de produtos
+├─ Consultat produtos
+├─ Atualizar produtos
+├─ Logout
+├─ Cadastrar usuário
+├─ Deletar usuário
+├─ Relatório de usuários
+└─ Consultar usuário
 ```
 
 ![Imagem para ilustrar o fluxo do sistema](/extra/fluxo_paginas.png)
