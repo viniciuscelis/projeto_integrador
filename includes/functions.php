@@ -262,10 +262,10 @@ function relatorio_user($conexao){
         $stmt->execute();
 
         // Retorna todos os registros em forma de array
-        $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Verifica se a tabela esta vazia
-        if (empty($produtos)) {
+        if (empty($usuarios)) {
             echo "<p>Nenhum usuário cadastrado no momento.</p>";
             return;
         }
@@ -280,7 +280,7 @@ function relatorio_user($conexao){
         echo "<th>Atribuição</th>";
 
         // Percorre a lista gerando as linhas da tabela
-        foreach($produtos as $p){
+        foreach($usuarios as $p){
             echo "<tr>";
             echo "<td>{$p['id']}</td>";
             echo "<td><strong>" . htmlspecialchars($p['nome']) . "</strong></td>";

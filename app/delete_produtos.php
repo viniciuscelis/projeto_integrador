@@ -30,7 +30,7 @@ require_once __DIR__ . '/../login/verifica_user.php';
         excluir_produtos($conexao, $_POST['id']);
     }
     ?>
-    <a href="/app/select_produtos.php">Ver relatório de produtos</a>
+    <a href="./select_produtos.php">Ver relatório de produtos</a>
     </main>
     <?php include __DIR__ . '/../includes/footer.php';?>
 </body>

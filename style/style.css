@@ -137,48 +137,18 @@ nav div:nth-child(2) a[href*="login"]:hover {
     border-color: #9f5419;
 }
 
-nav div:nth-child(2) a[href*="create_user"] {
-    background: #f2e9dc;
-    border-color: #dfcdb8;
-    color: #4a301a;
-}
-
-nav div:nth-child(2) a[href*="create_user"]:hover {
-    background: #4a301a;
-    color: #ffffff;
-    border-color: #4a301a;
-}
-
-nav div:nth-child(2) a[href*="delete_user"] {
-    background: #f2e9dc;
-    border-color: #dfcdb8;
-    color: #4a301a;
-}
-
-nav div:nth-child(2) a[href*="delete_user"]:hover {
-    background: #4a301a;
-    color: #ffffff;
-    border-color: #4a301a;
-}
-
-nav div:nth-child(2) a[href*="select_user"] {
-    background: #f2e9dc;
-    border-color: #dfcdb8;
-    color: #4a301a;
-}
-
-nav div:nth-child(2) a[href*="select_user"]:hover {
-    background: #4a301a;
-    color: #ffffff;
-    border-color: #4a301a;
-}
-
+nav div:nth-child(2) a[href*="create_user"],
+nav div:nth-child(2) a[href*="delete_user"],
+nav div:nth-child(2) a[href*="select_user"],
 nav div:nth-child(2) a[href*="consulta_user"] {
     background: #f2e9dc;
     border-color: #dfcdb8;
     color: #4a301a;
 }
 
+nav div:nth-child(2) a[href*="create_user"]:hover,
+nav div:nth-child(2) a[href*="delete_user"]:hover,
+nav div:nth-child(2) a[href*="select_user"]:hover,
 nav div:nth-child(2) a[href*="consulta_user"]:hover {
     background: #4a301a;
     color: #ffffff;
