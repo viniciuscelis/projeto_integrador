@@ -14,8 +14,8 @@ require_once __DIR__ . '/../login/verifica_user.php';
 </head>
 <body>
     <?php include __DIR__ . '/../includes/header.php';?>
-    <h1>Deletar usuários</h1>
     <main>
+    <h1>Deletar usuários</h1>
     <!-- Formulario para indicar o ID do usuário a ser excluido -->
     <form action="" method="post">
         <label for="id">ID: </label>

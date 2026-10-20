@@ -278,6 +278,9 @@ function relatorio_user($conexao){
         echo "<th>ID</th>";
         echo "<th>Nome</th>";
         echo "<th>Atribuição</th>";
+        echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
 
         // Percorre a lista gerando as linhas da tabela
         foreach($usuarios as $p){
