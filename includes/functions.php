@@ -228,4 +228,72 @@ function verificar_user($conexao, $nome)
         echo $e->getMessage();
     }
 }
+
+function excluir_user($conexao, $id)
+{
+    // Comando SQL para deletar o produto pelo ID
+    $sql = "DELETE FROM usuarios WHERE id = :id";
+
+    try {
+        // Prepara e executa a exclusao
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+
+        // Verifica se alguma linha foi afetada no banco
+        if ($stmt->rowCount() > 0) {
+            echo "<p style='color: green;'>Usuário $id deletado com sucesso.</p>";
+        } else {
+            echo "<p style='color: red;'>Nenhum usuário encontrado com o ID $id.</p>";
+        }
+    } catch (PDOException $e) {
+        // Exibe mensagem caso ocorra erro
+        echo "<p style='color: red;'>Erro ao deletar Usuários: " . $e->getMessage() . "</p>";
+    }
+}
+
+// Funcao para gerar relatorio com todos os usuários
+function relatorio_user($conexao){
+    // Busca todos os usuários ordenados pelo ID
+    $sql = "SELECT id, nome, atribuicao FROM usuarios ORDER BY id ASC";
+
+    try {
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute();
+
+        // Retorna todos os registros em forma de array
+        $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Verifica se a tabela esta vazia
+        if (empty($produtos)) {
+            echo "<p>Nenhum usuário cadastrado no momento.</p>";
+            return;
+        }
+
+        // Exibe os dados organizados em tabela
+        echo "<div class='tabela-container'>";
+        echo "<table class='tabela-usuarios'>";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th>ID</th>";
+        echo "<th>Nome</th>";
+        echo "<th>Atribuição</th>";
+
+        // Percorre a lista gerando as linhas da tabela
+        foreach($produtos as $p){
+            echo "<tr>";
+            echo "<td>{$p['id']}</td>";
+            echo "<td><strong>" . htmlspecialchars($p['nome']) . "</strong></td>";
+            echo "<td>" . htmlspecialchars($p['atribuicao']) . "</td>";
+            echo "</tr>";
+        }
+
+        echo "</tbody>";
+        echo "</table>";
+        echo "</div>";
+    } catch (PDOException $e) {
+        // Exibe mensagem caso ocorra erro
+        echo "<p style='color: red;'>Erro ao gerar relatório: " . $e->getMessage() . "</p>";
+    }
+}
 ?>

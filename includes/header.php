@@ -25,6 +25,8 @@ $pagina = basename($_SERVER['PHP_SELF']);
             <!-- Opcao exibida apenas se o usuario logado for dono -->
             <?php if (($_SESSION['atribuicao'] ?? '') === 'dono'): ?>
                 <a href="/projeto_integrador/app/create_user.php" class="<?= ($pagina == 'create_user.php') ? 'ativo' : '' ?>">Cadastrar usuário</a>
+                <a href="/projeto_integrador/app/delete_user.php" class="<?= ($pagina == 'delete_user.php') ? 'ativo' : '' ?>">Deletar usuário</a>
+                <a href="/projeto_integrador/app/select_user.php" class="<?= ($pagina == 'delete_user.php') ? 'ativo' : '' ?>">Relatório de usuários</a>
                 <a href="/projeto_integrador/app/consulta_user.php" class="<?= ($pagina == 'consulta_user.php') ? 'ativo' : '' ?>">Consultar usuário</a>
             <?php endif; ?>
             <!-- Links para autenticacao no sistema -->

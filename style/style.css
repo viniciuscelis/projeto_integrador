@@ -149,6 +149,18 @@ nav div:nth-child(2) a[href*="create_user"]:hover {
     border-color: #4a301a;
 }
 
+nav div:nth-child(2) a[href*="delete_user"] {
+    background: #f2e9dc;
+    border-color: #dfcdb8;
+    color: #4a301a;
+}
+
+nav div:nth-child(2) a[href*="delete_user"]:hover {
+    background: #4a301a;
+    color: #ffffff;
+    border-color: #4a301a;
+}
+
 nav div:nth-child(2) a[href*="consulta_user"] {
     background: #f2e9dc;
     border-color: #dfcdb8;
@@ -407,6 +419,42 @@ p[style*="color:red"] {
 }
 
 .tabela-produtos tr:hover {
+    background: #fdfaf6;
+}
+
+.tabela-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(90, 56, 30, 0.04);
+    border: 1px solid #ebd9c8;
+}
+
+.tabela-usuarios th {
+    background: #4a2e18;
+    color: #ffffff;
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+
+.tabela-usuarios td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f0e6dc;
+    font-size: 0.92rem;
+    color: #38291e;
+    text-align: left;
+}
+
+.tabela-usuarios tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-usuarios tr:hover {
     background: #fdfaf6;
 }
 
